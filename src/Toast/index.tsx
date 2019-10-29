@@ -36,7 +36,7 @@ const shadow = {
     height: 0
   },
   shadowOpacity: 0.1,
-  shadowRadius: 1,
+  shadowRadius: 2,
   elevation: 1
 }
 

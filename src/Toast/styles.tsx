@@ -29,6 +29,7 @@ export const StyledToast = styled(Animated.View)<StyledToastProps>`
   ${borderColor};
   width: 100%;
   z-index: 1000;
+  border-width: 1;
   min-height: 50px;
   border-radius: 4px;
   align-items: center;
