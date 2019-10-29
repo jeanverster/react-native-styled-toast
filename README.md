@@ -14,9 +14,16 @@
 
 ## Usage
 
-First, because this component relies on theming, you need to ensure that you've wrapped your app in the `ThemeProvider` component from `styled-components/native` - then use the `ToastProvider` and wrap the rest of your app:
+`react-native-styled-toast` uses Styled Components and Styled System under the hood, so please ensure you have these installed in your project. It also makes use of the `Constants` API from `expo-constants`, so you will need that too.
+
+Because this component relies on theming, you need to ensure that you've wrapped your app in the `ThemeProvider` component from `styled-components/native` - then use the `ToastProvider` and wrap the rest of your app:
 
 ```
+import { ThemeProvider } from 'styled-components/native'
+import { ToastProvider } from 'react-native-styled-toast
+
+...
+
 <ThemeProvider theme={theme}>
   <ToastProvider>
     <App />
@@ -60,7 +67,9 @@ By default, `react-native-styled-toast` references the following theme color key
 If your colors object in your theme does not contain these, you can customize these values in the toast configuration object. E.g:
 
 ```
-const { toast } = useToast({ bg: 'myBgColor', color: 'myTextColor' })
+const { toast } = useToast()
+
+<Button onPress={() => toast({ bg: 'myBgColor', color: 'myTextColor' })} />
 ```
 
 ## Dark Mode Compatible 🌗
