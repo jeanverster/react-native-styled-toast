@@ -1,6 +1,7 @@
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 import {
+  BorderColorProps,
   color,
   ColorProps,
   fontSize,
@@ -13,11 +14,14 @@ import {
   TopProps
 } from 'styled-system'
 
-type StyledToastProps = {
-  accentColor?: string
-}
+type StyledToastProps = SpaceProps &
+  ColorProps &
+  TopProps &
+  BorderColorProps & {
+    accentColor?: string
+  }
 
-export const StyledToast = styled(Animated.View)<SpaceProps & ColorProps & TopProps & StyledToastProps>`
+export const StyledToast = styled(Animated.View)<StyledToastProps>`
   ${top};
   ${color};
   ${space};
@@ -28,11 +32,10 @@ export const StyledToast = styled(Animated.View)<SpaceProps & ColorProps & TopPr
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  box-shadow: 0 0px 2px rgba(30, 30, 30, 0.2);
 `
 
 StyledToast.defaultProps = {
-  bg: 'muted',
+  bg: 'background',
   accentColor: 'success'
 }
 
@@ -59,7 +62,7 @@ export const Heading = styled.Text<TextProps>`
 `
 
 Heading.defaultProps = {
-  fontSize: 4,
+  fontSize: 2,
   color: 'text'
 }
 
@@ -69,7 +72,7 @@ export const SubText = styled.Text<TextProps>`
   ${fontSize};
   ${textAlign};
   flex-wrap: wrap;
-  font-weight: bold;
+  font-weight: lighter;
 `
 
 SubText.defaultProps = {
@@ -80,4 +83,15 @@ SubText.defaultProps = {
 export const IconCont = styled.View<SpaceProps>`
   ${space};
   align-items: center;
+  justify-content: center;
+`
+
+export const CloseButtonCont = styled.TouchableOpacity<SpaceProps>`
+  ${space};
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
 `
