@@ -9,7 +9,7 @@
 </p>
 <br />
 
-<img alt="react-native-styled-toast gif" src="https://i.imgur.com/Yh0QLPn.gif" >
+<img alt="react-native-styled-toast gif" src="https://i.imgur.com/u42bZ1d.gif" >
 
 ## Installation
 
