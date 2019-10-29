@@ -48,7 +48,7 @@ const ToastProvider: React.FC<ToastContextType> = ({ children, position }) => {
         style={position === 'BOTTOM' ? { bottom: 0 } : { top: 0 }}
       >
         {toasts.map((config: ToastConfig & ToastInternalConfig) => {
-          return <Toast key={config.id} onClose={(id) => hideToast(id)} {...config} />
+          return <Toast position={position} key={config.id} onClose={(id) => hideToast(id)} {...config} />
         })}
       </Box>
     </ToastContext.Provider>
