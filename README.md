@@ -106,3 +106,6 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`intent`**                | SUCCESS \| ERROR | no       | Updates icon and accent color based on intent.          | SUCCESS        |
 | **`closeIconBorderRadius`** | number           | no       | Sets the border radius of the close icon container      | 4              |
 | **`shouldVibrate`**         | boolean          | no       | Toggles whether phone vibrates on notification          | false          |
+
+<br />
+<div>Toast icon by <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
