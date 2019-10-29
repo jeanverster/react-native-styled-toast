@@ -10,7 +10,7 @@
 <br />
 
 <p>
-  <img alt="react-native-styled-toast gif" src="https://i.imgur.com/eEmy0oL.gif" >
+  <img alt="react-native-styled-toast gif" src="https://i.imgur.com/u42bZ1d.gif" >
 </p>
 
 ## Features
@@ -19,6 +19,7 @@
 - iOS and Android compatible
 - Styled with theme contraints
 - Written in React Hooks
+- Fully typed with TypeScript
 
 ## Installation
 
@@ -87,10 +88,6 @@ const { toast } = useToast()
 ## Dark Mode Compatible 🌗
 
 Because of the theming capability of `react-native-styled-toast`, it has out of the box support for dark mode. All you need to do is ensure the color keys you're using for your different modes are the same
-
-## Typescript Support 🚀
-
-`react-native-styled-toast` has been written in TypeScript so you can assure the type defs will always be up to date.
 
 ## Props
 
