@@ -26,6 +26,10 @@
     "styled-components": "^4.x",
     "styled-system": "^5.x"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeanverster/react-native-styled-toast"
+  },
   "devDependencies": {
     "@testing-library/react-native": "^4.1.0",
     "@types/jest": "^24.0.20",

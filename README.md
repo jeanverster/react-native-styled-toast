@@ -9,7 +9,14 @@
 </p>
 <br />
 
-<img alt="react-native-styled-toast gif" src="https://i.imgur.com/u42bZ1d.gif" >
+<img alt="react-native-styled-toast gif" src="https://i.imgur.com/eEmy0oL.gif" >
+
+## Features
+
+- Pure JS implementation
+- iOS and Android compatible
+- Styled with theme contraints
+- Written in React Hooks
 
 ## Installation
 
