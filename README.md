@@ -7,6 +7,9 @@
 <p>
   Themeable toaster component for React Native using Styled Components & Styled System.
 </p>
+<br />
+
+<img alt="react-native-styled-toast gif" src="https://i.imgur.com/Yh0QLPn.gif" >
 
 ## Installation
 
@@ -14,7 +17,7 @@
 
 ## Usage
 
-`react-native-styled-toast` uses Styled Components and Styled System under the hood, so please ensure you have these installed in your project. It also makes use of the `Constants` API from `expo-constants`, so you will need that too.
+`react-native-styled-toast` uses `styled-components` and `styled-system` under the hood, so please ensure you have these installed in your project. It also makes use of the `Constants` API from `expo-constants`, so you will need that too.
 
 Because this component relies on theming, you need to ensure that you've wrapped your app in the `ThemeProvider` component from `styled-components/native` - then use the `ToastProvider` and wrap the rest of your app:
 
@@ -41,7 +44,7 @@ const { toast } = useToast()
 <Button onPress={() => toast({...config}: ToastConfig)} />
 ```
 
-At the moment the only way to trigger a toast notification is by using the `useToast` hook, so you will need `react-native@0.59` or newer.
+At the moment the only way to trigger a toast notification is by using the `useToast` hook, so you will need `react-native@0.59` or newer and make use of function components.
 
 **This component relies on `styled-system` to access colors from your theme**. So you need to ensure that your theme object is configured correctly. Please refer to the `styled-system` [docs](https://styled-system.com/getting-started#getting-started). Your theme colors should looks something like this:
 
