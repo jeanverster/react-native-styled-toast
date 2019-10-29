@@ -9,7 +9,9 @@
 </p>
 <br />
 
-<img alt="react-native-styled-toast gif" src="https://i.imgur.com/eEmy0oL.gifv" >
+<p>
+  <img alt="react-native-styled-toast gif" src="https://i.imgur.com/eEmy0oL.gif" >
+</p>
 
 ## Features
 
