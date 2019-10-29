@@ -16,7 +16,6 @@ export type ToastConfig = {
   closeIconColor?: string
   shouldVibrate?: boolean
   closeButtonBgColor?: string
-  position?: 'TOP' | 'BOTTOM'
   intent?: 'SUCCESS' | 'ERROR'
   closeIconBorderRadius?: number
 }
@@ -24,6 +23,7 @@ export type ToastConfig = {
 export type ToastInternalConfig = {
   id?: string
   index?: number
+  position?: 'TOP' | 'BOTTOM'
   onClose?: (id: string) => void
 }
 
@@ -106,19 +106,13 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
     extrapolate: 'clamp'
   })
 
-  const opacity = animation.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [0, 1, 0],
-    extrapolate: 'clamp'
-  })
-
   return (
     <StyledToast
       mb={4}
       py={2}
       bg={bg}
       borderColor={borderColor}
-      style={{ transform: [{ translateY }, { scale }], opacity, ...shadow }}
+      style={{ transform: [{ translateY }, { scale }], ...shadow }}
     >
       <TouchableOpacity
         activeOpacity={1}
