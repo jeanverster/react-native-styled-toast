@@ -41,20 +41,21 @@ const shadow = {
 }
 
 export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
-  intent,
-  message,
-  duration,
-  onClose,
-  id,
-  index,
-  shouldVibrate,
-  onPress,
+  bg,
   borderColor,
   closeButtonBgColor,
-  closeIconColor,
   closeIconBorderRadius,
-  bg,
+  closeIconColor,
   color,
+  duration,
+  id,
+  index,
+  intent,
+  message,
+  onClose,
+  onPress,
+  position,
+  shouldVibrate,
   subMessage
 }) => {
   const isSuccess = intent === 'SUCCESS'
@@ -95,7 +96,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
 
   const translateY = animation.interpolate({
     inputRange: [0, 0.5, 1],
-    outputRange: [-topOffset, 0, -topOffset],
+    outputRange: [position === 'BOTTOM' ? topOffset : -topOffset, 0, -topOffset],
     extrapolate: 'clamp'
   })
 
