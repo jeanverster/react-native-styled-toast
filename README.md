@@ -10,7 +10,7 @@
 <br />
 
 <p>
-  <img alt="react-native-styled-toast gif" src="https://i.imgur.com/kSvIo6M.gif">
+  <img alt="react-native-styled-toast gif" src="https://i.imgur.com/CYiuYPD.gif" width="350">
 </p>
 
 ## Features
