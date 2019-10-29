@@ -58,7 +58,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "tsc --noEmit --skipLibCheck && yarn test --ci"
+      "pre-push": "tsc --noEmit --skipLibCheck"
     }
   },
   "dependencies": {}
