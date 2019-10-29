@@ -11,3 +11,4 @@ web-build/
 web-report/
 coverage/
 src/generated/
+dist
