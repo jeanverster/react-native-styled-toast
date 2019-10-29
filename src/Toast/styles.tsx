@@ -1,6 +1,7 @@
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 import {
+  borderColor,
   BorderColorProps,
   color,
   ColorProps,
@@ -25,6 +26,7 @@ export const StyledToast = styled(Animated.View)<StyledToastProps>`
   ${top};
   ${color};
   ${space};
+  ${borderColor};
   width: 100%;
   z-index: 1000;
   min-height: 50px;
@@ -58,7 +60,7 @@ export const Heading = styled.Text<TextProps>`
   ${fontSize};
   ${textAlign};
   flex-wrap: wrap;
-  font-weight: bold;
+  font-weight: normal;
 `
 
 Heading.defaultProps = {
@@ -72,7 +74,7 @@ export const SubText = styled.Text<TextProps>`
   ${fontSize};
   ${textAlign};
   flex-wrap: wrap;
-  font-weight: lighter;
+  font-weight: normal;
 `
 
 SubText.defaultProps = {
