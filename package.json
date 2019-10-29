@@ -1,8 +1,8 @@
 {
   "name": "react-native-styled-toast",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "A themeable toast component for React Native.",
-  "main": "./src/index.tsx",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "yarn format && rm -rf dist && tsc",
