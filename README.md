@@ -31,7 +31,7 @@ import { useToast } from 'react-native-styled-toast'
 
 const { toast } = useToast()
 
-<Button onPress={() => toast({ ...config })} />
+<Button onPress={() => toast({...config}: ToastConfig)} />
 ```
 
 At the moment the only way to trigger a toast notification is by using the `useToast` hook, so you will need `react-native@0.59` or newer.
@@ -63,9 +63,13 @@ If your colors object in your theme does not contain these, you can customize th
 const { toast } = useToast({ bg: 'myBgColor', color: 'myTextColor' })
 ```
 
-## Dark Mode Compatible
+## Dark Mode Compatible 🌗
 
-Because of the theming capability of `react-native-styled-toast`, it has out of the box support for dark mode. All you need to do is ensure the color keys you're using for your different modes are the same.
+Because of the theming capability of `react-native-styled-toast`, it has out of the box support for dark mode. All you need to do is ensure the color keys you're using for your different modes are the same
+
+## Typescript Support 🚀
+
+`react-native-styled-toast` has been written in TypeScript so you can assure the type defs will always be up to date.
 
 ## Props
 
@@ -76,7 +80,7 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`position`** | TOP \| BOTTOM | Sets the position of the toast notifications. | TOP     |
 |                |               |                                               |         |
 
-### `toast`
+### `ToastConfig`
 
 | Prop                        | Type             | Required | Description                                             | Default        |
 | --------------------------- | ---------------- | -------- | ------------------------------------------------------- | -------------- |
