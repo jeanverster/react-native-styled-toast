@@ -31,7 +31,7 @@
 
 Because this component relies on theming, you need to ensure that you've wrapped your app in the `ThemeProvider` component from `styled-components/native` - then use the `ToastProvider` and wrap the rest of your app:
 
-```
+```jsx
 import { ThemeProvider } from 'styled-components/native'
 import { ToastProvider } from 'react-native-styled-toast
 
@@ -46,7 +46,7 @@ import { ToastProvider } from 'react-native-styled-toast
 
 Now that your app has access to the Toast context, you can make use of the provided `useToast` hook to trigger a notification anywhere in your app:
 
-```
+```jsx
 import { useToast } from 'react-native-styled-toast'
 
 const { toast } = useToast()
@@ -58,7 +58,7 @@ At the moment the only way to trigger a toast notification is by using the `useT
 
 **This component relies on `styled-system` to access colors from your theme**. So you need to ensure that your theme object is configured correctly. Please refer to the `styled-system` [docs](https://styled-system.com/getting-started#getting-started). Your theme colors should looks something like this:
 
-```
+```javascript
 // theme.js
 export default {
   colors: {
@@ -79,7 +79,7 @@ By default, `react-native-styled-toast` references the following theme color key
 
 If your colors object in your theme does not contain these, you can customize these values in the toast configuration object. E.g:
 
-```
+```jsx
 const { toast } = useToast()
 
 <Button onPress={() => toast({ bg: 'myBgColor', color: 'myTextColor' })} />
