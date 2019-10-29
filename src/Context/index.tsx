@@ -1,9 +1,9 @@
 import Constants from 'expo-constants'
 import * as React from 'react'
 import { LayoutAnimation } from 'react-native'
+import Box from '../Box'
 import Toast, { ToastConfig } from '../Toast'
 import { uuid } from '../Utils'
-import { ToastWrapper } from './styles'
 
 type ToastContextType = {
   toast?: (options: ToastConfig) => void
@@ -31,11 +31,11 @@ const ToastProvider: React.FC<ToastContextType> = ({ children }) => {
   return (
     <ToastContext.Provider value={{ toast }}>
       {children}
-      <ToastWrapper px={4} pt={offset}>
+      <Box px={4} pt={offset} position="absolute" top={0} left={0} right={0}>
         {toasts.map((config) => {
           return <Toast key={config.id} onClose={(id) => hideToast(id)} {...config} />
         })}
-      </ToastWrapper>
+      </Box>
     </ToastContext.Provider>
   )
 }

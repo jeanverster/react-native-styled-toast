@@ -1,14 +1,13 @@
 {
   "name": "react-native-styled-toast",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A themeable toast component for React Native.",
-  "main": "dist/index.js",
+  "main": "./src/index.tsx",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "yarn format && rm -rf dist && tsc",
     "release": "semantic-release --repository-url git@github.com:${TRAVIS_REPO_SLUG}",
     "format": "yarn prettier -- --write",
-    "precommit": "yarn format",
     "prepublishOnly": "yarn build",
     "prettier": "prettier \"**/*.+(js|jsx|json|css|scss|ts|tsx)\"",
     "test": "jest"
