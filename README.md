@@ -51,7 +51,7 @@ import { useToast } from 'react-native-styled-toast'
 
 const { toast } = useToast()
 
-<Button onPress={() => toast({...config}: ToastConfig)} />
+<Button onPress={() => toast({ message: 'Check me out!', ...config })} />
 ```
 
 At the moment the only way to trigger a toast notification is by using the `useToast` hook, so you will need `react-native@0.59` or newer and make use of function components.
