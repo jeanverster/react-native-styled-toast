@@ -3,22 +3,44 @@ import * as React from 'react'
 import { Animated, Easing, StyleSheet, TouchableOpacity, Vibration } from 'react-native'
 import Box from '../Box'
 import Icon from '../Icon'
-import { Accent, IconCont, StyledToast, SubText } from './styles'
+import { Accent, CloseButtonCont, Heading, IconCont, StyledToast, SubText } from './styles'
 
 export type ToastConfig = {
-  id?: string
-  index?: number
+  bg?: string
+  color?: string
   message: string
+  subMessage?: string
   duration?: number
   onPress?: () => void
+  borderColor?: string
+  closeIconColor?: string
   shouldVibrate?: boolean
+  closeButtonBgColor?: string
+  position?: 'TOP' | 'BOTTOM'
   intent?: 'SUCCESS' | 'ERROR'
+  closeIconBorderRadius?: number
+}
+
+export type ToastInternalConfig = {
+  id?: string
+  index?: number
   onClose?: (id: string) => void
 }
 
 const offset = Constants.statusBarHeight + 16
 
-export const Toast: React.FC<ToastConfig> = ({
+const shadow = {
+  shadowColor: '#000',
+  shadowOffset: {
+    width: 0,
+    height: 0
+  },
+  shadowOpacity: 0.1,
+  shadowRadius: 1,
+  elevation: 1
+}
+
+export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   intent,
   message,
   duration,
@@ -26,7 +48,14 @@ export const Toast: React.FC<ToastConfig> = ({
   id,
   index,
   shouldVibrate,
-  onPress
+  onPress,
+  borderColor,
+  closeButtonBgColor,
+  closeIconColor,
+  closeIconBorderRadius,
+  bg,
+  color,
+  subMessage
 }) => {
   const isSuccess = intent === 'SUCCESS'
   const topOffset = offset + 60 * (index || 0)
@@ -83,12 +112,17 @@ export const Toast: React.FC<ToastConfig> = ({
   })
 
   return (
-    <StyledToast mb={4} style={{ transform: [{ translateY }, { scale }], opacity }} py={2}>
+    <StyledToast
+      mb={4}
+      py={2}
+      bg={bg}
+      borderColor={borderColor}
+      style={{ transform: [{ translateY }, { scale }], opacity, ...shadow }}
+    >
       <TouchableOpacity
         activeOpacity={1}
-        testID="toast-touchable"
         onPress={onPress}
-        // eslint-disable-next-line
+        testID="toast-touchable"
         style={{ ...StyleSheet.absoluteFillObject, flexDirection: 'row' }}
       >
         <Accent testID="toast-accent" bg={isSuccess ? 'success' : 'error'} />
@@ -101,9 +135,19 @@ export const Toast: React.FC<ToastConfig> = ({
           />
         </IconCont>
         <Box flex={1} alignItems="flex-start">
-          <SubText>{message}</SubText>
+          <Heading color={color}>{message}</Heading>
+          {!!subMessage && (
+            <SubText color={color} mt={2}>
+              {subMessage}
+            </SubText>
+          )}
         </Box>
       </TouchableOpacity>
+      <CloseButtonCont onPress={() => onClose && id && onClose(id)}>
+        <Box pl={1} p={2} borderRadius={closeIconBorderRadius} mx={2} bg={closeButtonBgColor} alignItems="center">
+          <Icon size={20} family="Feather" name="x" color={closeIconColor} />
+        </Box>
+      </CloseButtonCont>
     </StyledToast>
   )
 }
@@ -115,5 +159,9 @@ Toast.defaultProps = {
   intent: 'SUCCESS',
   onPress: () => false,
   shouldVibrate: false,
-  message: 'Toast message!'
+  closeIconColor: 'text',
+  message: 'Toast message!',
+  closeButtonBgColor: 'muted',
+  closeIconBorderRadius: 4,
+  borderColor: 'border'
 }
