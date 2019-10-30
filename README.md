@@ -18,7 +18,7 @@
 - Pure JS implementation
 - iOS and Android compatible
 - Styled with theme contraints
-- Written in React Hooks
+- Written using React Hooks
 - Fully typed with TypeScript
 
 ## Installation
@@ -96,7 +96,6 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | Prop           | Value         | Description                                   | Default |
 | -------------- | ------------- | --------------------------------------------- | ------- |
 | **`position`** | TOP \| BOTTOM | Sets the position of the toast notifications. | TOP     |
-|                |               |                                               |         |
 
 ### `ToastConfig`
 
@@ -107,7 +106,7 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`message`**               | string           | yes      | Text message that gets rendered                         | Toast Message! |
 | **`subMessage`**            | string           | no       | Sub message that gets rendered below message            | undefined      |
 | **`duration`**              | number           | no       | ms duration of toast before auto closing. 0 = infinite. | 3000           |
-| **`onPress`**               | () => void       | no       | Function that gets exectuted onPress of toast           | () => false    |
+| **`onPress`**               | func       | no       | Function that gets exectuted onPress of toast           | () => false    |
 | **`borderColor`**           | string           | no       | Sets border color of toast                              | border         |
 | **`intent`**                | SUCCESS \| ERROR | no       | Updates icon and accent color based on intent.          | SUCCESS        |
 | **`closeIconBorderRadius`** | number           | no       | Sets the border radius of the close icon container      | 4              |
