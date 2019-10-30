@@ -16,7 +16,9 @@
     "toast",
     "toaster",
     "react-native",
-    "notifications"
+    "notifications",
+    "react-native-component",
+    "react-native-toast"
   ],
   "author": "Jean Verster",
   "license": "MIT",
