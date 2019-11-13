@@ -9,18 +9,20 @@ import { uuid } from '../Utils'
 type ToastContextType = {
   toast?: (options: ToastConfig) => void
   position?: 'TOP' | 'BOTTOM'
+  offset?: number
 }
+
 export const ToastContext = React.createContext<Partial<ToastContextType>>({})
 
 export const useToast = () => React.useContext(ToastContext)
 
-const offset = Constants.statusBarHeight + 16
+const originalOffset = Constants.statusBarHeight + 16
 
 UIManager && UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true)
 
 export type FullToastConfig = ToastConfig & ToastInternalConfig
 
-const ToastProvider: React.FC<ToastContextType> = ({ children, position }) => {
+const ToastProvider: React.FC<ToastContextType> = ({ children, position, offset: offsetProp }) => {
   const [toasts, setToasts] = React.useState<FullToastConfig[]>([])
 
   const toast = (newToast: ToastConfig) => {
@@ -37,6 +39,8 @@ const ToastProvider: React.FC<ToastContextType> = ({ children, position }) => {
     setToasts((prevToasts) => prevToasts.filter((el) => el.id !== id))
   }
 
+  const offset = offsetProp || originalOffset
+
   return (
     <ToastContext.Provider value={{ toast }}>
       {children}
@@ -45,6 +49,7 @@ const ToastProvider: React.FC<ToastContextType> = ({ children, position }) => {
         left={0}
         right={0}
         position="absolute"
+        pointerEvents="box-none"
         pt={position === 'BOTTOM' ? 0 : offset}
         pb={position === 'BOTTOM' ? offset : 0}
         style={position === 'BOTTOM' ? { bottom: 0 } : { top: 0 }}

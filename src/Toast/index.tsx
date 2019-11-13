@@ -1,6 +1,6 @@
 import Constants from 'expo-constants'
 import * as React from 'react'
-import { Animated, Easing, StyleSheet, TouchableOpacity, Vibration } from 'react-native'
+import { Animated, StyleSheet, TouchableOpacity, Vibration } from 'react-native'
 import Box from '../Box'
 import Icon from '../Icon'
 import { Accent, CloseButtonCont, Heading, IconCont, StyledToast, SubText } from './styles'
@@ -17,7 +17,7 @@ export type ToastConfig = {
   shouldVibrate?: boolean
   closeButtonBgColor?: string
   intent?: 'SUCCESS' | 'ERROR'
-  closeIconBorderRadius?: number
+  closeButtonBorderRadius?: number
 }
 
 export type ToastInternalConfig = {
@@ -44,7 +44,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   bg,
   borderColor,
   closeButtonBgColor,
-  closeIconBorderRadius,
+  closeButtonBorderRadius,
   closeIconColor,
   color,
   duration,
@@ -63,17 +63,6 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
 
   const animation = new Animated.Value(0)
 
-  const removeToast = (id: string) => {
-    Animated.timing(animation, {
-      toValue: 1,
-      duration: 300,
-      easing: Easing.ease,
-      useNativeDriver: true
-    }).start(() => {
-      onClose && onClose(id)
-    })
-  }
-
   React.useEffect(() => {
     Animated.timing(animation, {
       toValue: 0.5,
@@ -85,7 +74,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
           if (index === 0) {
             clearTimeout(timer)
           }
-          id && removeToast(id)
+          id && onClose && onClose(id)
         }, duration)
       }
     })
@@ -95,9 +84,8 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   }, [])
 
   const translateY = animation.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [position === 'BOTTOM' ? topOffset : -topOffset, 0, -topOffset],
-    extrapolate: 'clamp'
+    inputRange: [0, 0.5],
+    outputRange: [position === 'BOTTOM' ? topOffset : -topOffset, 0]
   })
 
   const scale = animation.interpolate({
@@ -139,7 +127,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
         </Box>
       </TouchableOpacity>
       <CloseButtonCont onPress={() => onClose && id && onClose(id)}>
-        <Box pl={1} p={2} borderRadius={closeIconBorderRadius} mx={2} bg={closeButtonBgColor} alignItems="center">
+        <Box pl={1} p={2} borderRadius={closeButtonBorderRadius} mx={2} bg={closeButtonBgColor} alignItems="center">
           <Icon size={20} family="Feather" name="x" color={closeIconColor} />
         </Box>
       </CloseButtonCont>
@@ -157,6 +145,6 @@ Toast.defaultProps = {
   closeIconColor: 'text',
   message: 'Toast message!',
   closeButtonBgColor: 'muted',
-  closeIconBorderRadius: 4,
+  closeButtonBorderRadius: 4,
   borderColor: 'border'
 }
