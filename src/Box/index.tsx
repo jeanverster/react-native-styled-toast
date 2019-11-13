@@ -1,107 +1,43 @@
 import styled from 'styled-components/native'
 import {
-  alignItems,
-  AlignItemsProps,
-  alignSelf,
-  AlignSelfProps,
-  borderRadius,
-  BorderRadiusProps,
-  borders,
-  BordersProps,
-  bottom,
-  BottomProps,
-  boxShadow,
-  BoxShadowProps,
+  background,
+  BackgroundProps,
+  border,
+  BorderProps,
   color,
   ColorProps,
   compose,
-  flex,
-  flexDirection,
-  FlexDirectionProps,
-  FlexProps,
-  flexWrap,
-  FlexWrapProps,
-  height,
-  HeightProps,
-  justifyContent,
-  JustifyContentProps,
-  left,
-  LeftProps,
-  maxWidth,
-  MaxWidthProps,
-  minHeight,
-  MinHeightProps,
-  minWidth,
-  MinWidthProps,
-  opacity,
-  OpacityProps,
-  overflow,
-  OverflowProps,
+  flexbox,
+  FlexboxProps,
+  layout,
+  LayoutProps,
   position,
   PositionProps,
-  right,
-  RightProps,
+  shadow,
+  ShadowProps,
   space,
-  SpaceProps,
-  top,
-  TopProps,
-  width,
-  WidthProps,
-  zIndex,
-  ZIndexProps
+  SpaceProps
 } from 'styled-system'
 
 export const systemProps = compose(
-  alignItems,
-  alignSelf,
-  borderRadius,
-  borders,
-  bottom,
-  boxShadow,
-  color,
-  flex,
-  flexDirection,
-  flexWrap,
-  height,
-  justifyContent,
-  left,
-  maxWidth,
-  minHeight,
-  minWidth,
-  opacity,
-  overflow,
-  position,
-  right,
   space,
-  top,
-  width,
-  zIndex
+  layout,
+  color,
+  flexbox,
+  background,
+  border,
+  position,
+  shadow
 )
 
-export type BoxProps = AlignItemsProps &
-  AlignSelfProps &
-  BorderRadiusProps &
-  BordersProps &
-  BottomProps &
-  BoxShadowProps &
+export type BoxProps = SpaceProps &
   ColorProps &
-  FlexProps &
-  FlexDirectionProps &
-  FlexWrapProps &
-  HeightProps &
-  JustifyContentProps &
-  LeftProps &
-  MaxWidthProps &
-  MinHeightProps &
-  MinWidthProps &
-  OpacityProps &
-  OverflowProps &
+  LayoutProps &
+  FlexboxProps &
+  BackgroundProps &
+  BorderProps &
   PositionProps &
-  RightProps &
-  SpaceProps &
-  TopProps &
-  WidthProps &
-  ZIndexProps & {
+  ShadowProps & {
     elevation?: number
   }
 
