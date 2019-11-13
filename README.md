@@ -16,6 +16,7 @@
 ## Features
 
 - Pure JS implementation
+- Supports multiple toasts
 - iOS and Android compatible
 - Styled with theme contraints
 - Written using React Hooks
@@ -65,8 +66,8 @@ export default {
     black: '#000e1a',
     white: '#fff',
     blue: '#007ce0',
-    navy: '#004175',
-  },
+    navy: '#004175'
+  }
 }
 ```
 
@@ -93,9 +94,10 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 
 ### `ToastProvider`
 
-| Prop           | Value         | Description                                   | Default |
-| -------------- | ------------- | --------------------------------------------- | ------- |
-| **`position`** | TOP \| BOTTOM | Sets the position of the toast notifications. | TOP     |
+| Prop           | Type   | Required | Description                                        | Default                        |
+| -------------- | ------ | -------- | -------------------------------------------------- | ------------------------------ |
+| **`position`** | enum   | no       | Sets the position of the toasts                    | TOP                            |
+| **`offset`**   | number | no       | Overrides the default offset from the top / bottom | Constants.statusBarHeight + 16 |
 
 ### `ToastConfig`
 
@@ -106,9 +108,11 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`message`**               | string           | yes      | Text message that gets rendered                         | Toast Message! |
 | **`subMessage`**            | string           | no       | Sub message that gets rendered below message            | undefined      |
 | **`duration`**              | number           | no       | ms duration of toast before auto closing. 0 = infinite. | 3000           |
-| **`onPress`**               | func       | no       | Function that gets exectuted onPress of toast           | () => false    |
+| **`onPress`**               | func             | no       | Function that gets exectuted onPress of toast           | () => false    |
 | **`borderColor`**           | string           | no       | Sets border color of toast                              | border         |
 | **`intent`**                | SUCCESS \| ERROR | no       | Updates icon and accent color based on intent.          | SUCCESS        |
+| **`closeButtonBgColor`**    | string           | no       | Sets bg color of the close button                       | muted          |
+| **`closeIconColor`**        | string           | no       | Sets the color of the close icon                        | text           |
 | **`closeIconBorderRadius`** | number           | no       | Sets the border radius of the close icon container      | 4              |
 | **`shouldVibrate`**         | boolean          | no       | Toggles whether phone vibrates on notification          | false          |
 
