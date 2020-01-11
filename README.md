@@ -5,7 +5,7 @@
 # react-native-styled-toast
 
 <p>
-  Themeable toaster component for React Native using Styled Components & Styled System.
+  Themeable React Native toast component built using Styled Components & Styled System.
 </p>
 <br />
 
@@ -45,7 +45,7 @@ return (
 )
 ```
 
-Now that your app has access to the Toast context, you can make use of the provided `useToast` hook to trigger a notification anywhere in your app:
+Now that your app has access to the Toast context, you can make use of the provided `useToast` hook to trigger a toast anywhere in your app:
 
 ```jsx
 import { useToast } from 'react-native-styled-toast'
@@ -55,7 +55,7 @@ const { toast } = useToast()
 return <Button onPress={() => toast({ message: 'Check me out!', ...config })} />
 ```
 
-If you aren't able to make use of hooks for whatever reason, you can still use the provided ToastContext.Consumer
+If you aren't able to make use of hooks for whatever reason, you can still use the provided ToastContext.Consumer to fire off a toast.
 
 ```jsx
 import { ToastContext } from 'react-native-styled-toast'
