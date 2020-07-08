@@ -125,20 +125,24 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 
 ### `ToastConfig`
 
-| Prop                        | Type    | Required | Description                                             | Default        |
-| --------------------------- | ------- | -------- | ------------------------------------------------------- | -------------- |
-| **`bg`**                    | string  | no       | Sets the background color of the toast                  | background     |
-| **`color`**                 | string  | no       | Sets the text color of the toast                        | text           |
-| **`message`**               | string  | yes      | Text message that gets rendered                         | Toast Message! |
-| **`subMessage`**            | string  | no       | Sub message that gets rendered below message            | undefined      |
-| **`duration`**              | number  | no       | ms duration of toast before auto closing. 0 = infinite. | 3000           |
-| **`onPress`**               | func    | no       | Function that gets exectuted onPress of toast           | () => false    |
-| **`borderColor`**           | string  | no       | Sets border color of toast                              | border         |
-| **`intent`**                | enum    | no       | Updates icon and accent color based on intent.          | SUCCESS        |
-| **`closeButtonBgColor`**    | string  | no       | Sets bg color of the close button                       | muted          |
-| **`closeIconColor`**        | string  | no       | Sets the color of the close icon                        | text           |
-| **`closeIconBorderRadius`** | number  | no       | Sets the border radius of the close icon container      | 4              |
-| **`shouldVibrate`**         | boolean | no       | Toggles whether phone vibrates on notification          | false          |
+| Prop                        | Type    | Required | Description                                                            | Default        |
+| --------------------------- | ------- | -------- | ---------------------------------------------------------------------- | -------------- |
+| **`bg`**                    | string  | no       | Sets the background color of the toast                                 | background     |
+| **`borderColor`**           | string  | no       | Sets border color of toast                                             | border         |
+| **`closeButtonBgColor`**    | string  | no       | Sets bg color of the close button                                      | muted          |
+| **`closeIconBorderRadius`** | number  | no       | Sets the border radius of the close icon container                     | 4              |
+| **`closeIconColor`**        | string  | no       | Sets the color of the close icon                                       | text           |
+| **`color`**                 | string  | no       | Sets the text color of the toast                                       | text           |
+| **`duration`**              | number  | no       | ms duration of toast before auto closing. 0 = infinite.                | 3000           |
+| **`hideIcon`**              | boolean | no       | Toggles whether to show / hide icon                                    | false          |
+| **`iconColor`**             | string  | no       | Customize icon color using key from theme                              | undefined      |
+| **`iconFamily`**            | string  | no       | Allow referencing of custom icon family from react-native-vector-icons | Feather        |
+| **`iconName`**              | string  | no       | Allow referencing of custom icon name from specified icon family       | undefined      |
+| **`intent`**                | enum    | no       | Updates icon and accent color based on intent.                         | SUCCESS        |
+| **`message`**               | string  | yes      | Text message that gets rendered                                        | Toast Message! |
+| **`onPress`**               | func    | no       | Function that gets exectuted onPress of toast                          | () => false    |
+| **`shouldVibrate`**         | boolean | no       | Toggles whether phone vibrates on notification                         | false          |
+| **`subMessage`**            | string  | no       | Sub message that gets rendered below message                           | undefined      |
 
 <br />
 <div>Toast icon by <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>

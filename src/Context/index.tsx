@@ -1,6 +1,6 @@
-import Constants from 'expo-constants'
 import * as React from 'react'
 import { LayoutAnimation, UIManager } from 'react-native'
+import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Box from '../Box'
 import Toast, { ToastConfig } from '../Toast'
 import { ToastInternalConfig } from '../Toast/index'
@@ -16,7 +16,7 @@ export const ToastContext = React.createContext<Partial<ToastContextType>>({})
 
 export const useToast = () => React.useContext(ToastContext)
 
-const originalOffset = Constants.statusBarHeight + 16
+const originalOffset = getStatusBarHeight(true) + 16
 
 UIManager && UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true)
 
