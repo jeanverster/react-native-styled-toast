@@ -5,7 +5,7 @@
 # react-native-styled-toast
 
 <p>
-  Themeable React Native toast component built using Styled Components & Styled System.
+  Themeable react-native toast component built using styled-components & styled-system.
 </p>
 <br />
 
@@ -28,9 +28,9 @@
 
 ## Usage
 
-`react-native-styled-toast` uses `styled-components` and `styled-system` under the hood, so please ensure you have these installed in your project. It also makes use of the `Constants` API from `expo-constants`, so you will need that too.
+`react-native-styled-toast` is built to work with both vanilla react-native apps as well as react-native apps bootstrapped with Expo. It utilizes `styled-components` and `styled-system` under the hood to facilitate theming.
 
-Because this component relies on theming, you need to ensure that you've wrapped your app in the `ThemeProvider` component from `styled-components` - then use the `ToastProvider` and wrap the rest of your app:
+Because the toasts rely on theming, you need to ensure that you've wrapped your app in the `ThemeProvider` component from `styled-components` - then use the `ToastProvider` and wrap the rest of your app:
 
 ```jsx
 import { ThemeProvider } from 'styled-components'
