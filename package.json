@@ -1,7 +1,7 @@
 {
   "name": "react-native-styled-toast",
-  "version": "1.0.16",
-  "description": "A themeable toast component for React Native.",
+  "version": "1.0.17",
+  "description": "A theme friendly, easy to use react-native toast component built using styled-components and styled-system.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -36,6 +36,7 @@
     "@types/jest": "^24.0.20",
     "@types/react": "^16.9.11",
     "@types/react-native": "^0.60.22",
+    "@types/react-native-vector-icons": "^6.4.5",
     "@types/styled-system": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "^2.6.0",
@@ -48,6 +49,7 @@
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.3",
     "prettier": "^1.18.2",
+    "react-native-vector-icons": "^7.0.0",
     "react-test-renderer": "16.8.3",
     "typescript": "^3.6.4"
   },
