@@ -24,9 +24,7 @@
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.8.x",
-    "react-native": "^0.60.x",
-    "styled-components": "^4.x",
-    "styled-system": "^5.x"
+    "react-native": "^0.60.x"
   },
   "repository": {
     "type": "git",
@@ -56,5 +54,9 @@
       "pre-push": "tsc --noEmit --skipLibCheck"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-native-status-bar-height": "^2.5.0",
+    "styled-components": "^5.1.1",
+    "styled-system": "^5.1.5"
+  }
 }
