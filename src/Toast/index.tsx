@@ -1,24 +1,41 @@
-import Constants from 'expo-constants'
 import * as React from 'react'
 import { Animated, StyleSheet, TouchableOpacity, Vibration } from 'react-native'
+import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Box from '../Box'
 import Icon from '../Icon'
 import { Accent, CloseButtonCont, Heading, IconCont, StyledToast, SubText } from './styles'
 
 export type ToastConfig = {
   bg?: string
-  color?: string
-  message: string
-  subMessage?: string
-  duration?: number
-  onPress?: () => void
   borderColor?: string
-  closeIconColor?: string
-  shouldVibrate?: boolean
   closeButtonBgColor?: string
-  intent?: 'SUCCESS' | 'ERROR'
   closeButtonBorderRadius?: number
+  closeIconColor?: string
+  color?: string
+  duration?: number
+  hideIcon?: boolean
+  intent?: 'SUCCESS' | 'ERROR' | 'INFO'
+  message: string
+  onPress?: () => void
+  shouldVibrate?: boolean
+  subMessage?: string
+  iconFamily?:
+    | 'Entypo'
+    | 'EvilIcons'
+    | 'Feather'
+    | 'FontAwesome'
+    | 'Foundation'
+    | 'Ionicons'
+    | 'MaterialCommunityIcons'
+    | 'MaterialIcons'
+    | 'Octicons'
+    | 'SimpleLineIcons'
+    | 'Zocial'
+  iconName?: string
+  iconColor?: string
 }
+
+const statusBarHeight = getStatusBarHeight(true)
 
 export type ToastInternalConfig = {
   id?: string
@@ -27,7 +44,7 @@ export type ToastInternalConfig = {
   onClose?: (id: string) => void
 }
 
-const offset = Constants.statusBarHeight + 16
+const offset = statusBarHeight + 16
 
 const shadow = {
   shadowColor: '#000',
@@ -48,6 +65,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   closeIconColor,
   color,
   duration,
+  hideIcon,
   id,
   index,
   intent,
@@ -56,7 +74,10 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   onPress,
   position,
   shouldVibrate,
-  subMessage
+  subMessage,
+  iconFamily,
+  iconName,
+  iconColor
 }) => {
   const isSuccess = intent === 'SUCCESS'
   const topOffset = offset + 60 * (index || 0)
@@ -109,15 +130,17 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
         style={{ ...StyleSheet.absoluteFillObject, flexDirection: 'row' }}
       >
         <Accent testID="toast-accent" bg={isSuccess ? 'success' : 'error'} />
-        <IconCont px={4}>
-          <Icon
-            size={20}
-            family="Feather"
-            name={isSuccess ? 'check-circle' : 'x-circle'}
-            color={isSuccess ? 'success' : 'error'}
-          />
-        </IconCont>
-        <Box flex={1} alignItems="flex-start">
+        {!hideIcon && (
+          <IconCont px={4}>
+            <Icon
+              size={20}
+              family={iconFamily || 'Feather'}
+              color={!!iconColor ? iconColor : isSuccess ? 'success' : 'error'}
+              name={!!iconName ? iconName : isSuccess ? 'check-circle' : 'x-circle'}
+            />
+          </IconCont>
+        )}
+        <Box pl={hideIcon ? 4 : 0} flex={1} alignItems="flex-start">
           <Heading color={color}>{message}</Heading>
           {!!subMessage && (
             <SubText color={color} mt={2}>
@@ -127,7 +150,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
         </Box>
       </TouchableOpacity>
       <CloseButtonCont onPress={() => onClose && id && onClose(id)}>
-        <Box pl={1} p={2} borderRadius={closeButtonBorderRadius} mx={2} bg={closeButtonBgColor} alignItems="center">
+        <Box p={2} mx={2} pl={1} alignItems="center" bg={closeButtonBgColor} borderRadius={closeButtonBorderRadius}>
           <Icon size={20} family="Feather" name="x" color={closeIconColor} />
         </Box>
       </CloseButtonCont>
@@ -146,5 +169,6 @@ Toast.defaultProps = {
   message: 'Toast message!',
   closeButtonBgColor: 'muted',
   closeButtonBorderRadius: 4,
-  borderColor: 'border'
+  borderColor: 'border',
+  hideIcon: false
 }
