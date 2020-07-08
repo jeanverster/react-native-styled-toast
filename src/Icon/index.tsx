@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as React from 'react'
 import Entypo from 'react-native-vector-icons/Entypo'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
