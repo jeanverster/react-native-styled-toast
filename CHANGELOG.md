@@ -1,3 +1,10 @@
+## [1.0.21](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.20...v1.0.21) (2020-09-14)
+
+
+### Bug Fixes
+
+* manual version bump; chore: update release job name ([c14f2a8](https://github.com/jeanverster/react-native-styled-toast/commit/c14f2a8bbe49307ed690d822b189effb126f4f72))
+
 # 1.0.0 (2020-09-14)
 
 

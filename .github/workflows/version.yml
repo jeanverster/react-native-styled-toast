@@ -4,7 +4,7 @@ on:
     branches:
       - 'develop'
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
