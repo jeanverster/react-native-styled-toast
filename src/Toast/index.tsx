@@ -150,7 +150,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
         </Box>
       </TouchableOpacity>
       <CloseButtonCont onPress={() => onClose && id && onClose(id)}>
-        <Box p={2} mx={2} pl={1} alignItems="center" bg={closeButtonBgColor} borderRadius={closeButtonBorderRadius}>
+        <Box p={2} mx={2} alignItems="center" bg={closeButtonBgColor} borderRadius={closeButtonBorderRadius}>
           <Icon size={20} family="Feather" name="x" color={closeIconColor} />
         </Box>
       </CloseButtonCont>

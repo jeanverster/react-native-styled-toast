@@ -6,10 +6,10 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "yarn format && rm -rf dist && tsc",
-    "release": "semantic-release --repository-url git@github.com:${TRAVIS_REPO_SLUG}",
     "format": "yarn prettier -- --write",
     "prepublishOnly": "yarn build",
     "prettier": "prettier \"**/*.+(js|jsx|json|css|scss|ts|tsx)\"",
+    "release": "npm publish",
     "test": "jest"
   },
   "keywords": [
@@ -26,14 +26,19 @@
     "react": "^16.8.x",
     "react-native": "^0.60.x",
     "react-native-vector-icons": "^6.x",
-    "styled-system": "^5.x",
-    "styled-components": "^4.x"
+    "styled-components": "^4.x",
+    "styled-system": "^5.x"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jeanverster/react-native-styled-toast"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/npm": "^7.0.6",
+    "@semantic-release/release-notes-generator": "^9.0.1",
     "@testing-library/react-native": "^4.1.0",
     "@types/jest": "^24.0.20",
     "@types/react": "^16.9.11",
@@ -53,10 +58,28 @@
     "prettier": "^1.18.2",
     "react-native-vector-icons": "^7.0.0",
     "react-test-renderer": "16.8.3",
+    "semantic-release": "^17.1.1",
     "typescript": "^3.6.4"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.1",
     "react-native-status-bar-height": "^2.5.0"
+  },
+  "release": {
+    "branches": [
+      "develop"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/git"
+    ]
   }
 }
