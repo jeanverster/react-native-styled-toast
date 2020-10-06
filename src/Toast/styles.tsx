@@ -1,4 +1,4 @@
-import { Animated } from 'react-native'
+import { Animated, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 import {
   borderColor,
@@ -22,15 +22,17 @@ type StyledToastProps = SpaceProps &
     accentColor?: string
   }
 
-export const StyledToast = styled(Animated.View)<StyledToastProps>`
+const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity)
+
+export const StyledToast = styled(AnimatedTouchable)<StyledToastProps>`
   ${top};
   ${color};
   ${space};
   ${borderColor};
+  flex: 1;
   width: 100%;
   z-index: 1000;
   border-width: 1px;
-  min-height: 50px;
   border-radius: 4px;
   align-items: center;
   flex-direction: row;
@@ -91,10 +93,6 @@ export const IconCont = styled.View<SpaceProps>`
 
 export const CloseButtonCont = styled.TouchableOpacity<SpaceProps>`
   ${space};
-  top: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
   align-items: center;
   justify-content: center;
 `
