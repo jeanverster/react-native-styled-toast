@@ -1,3 +1,10 @@
+## [1.0.25](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.24...v1.0.25) (2020-10-06)
+
+
+### Bug Fixes
+
+* remove `react-native-safe-area-context` dependency as was causing duplicate dependency problems ([0a32f1a](https://github.com/jeanverster/react-native-styled-toast/commit/0a32f1a46286200ecfce2490ac15c0299b46cee8))
+
 ## [1.0.24](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.23...v1.0.24) (2020-10-06)
 
 
