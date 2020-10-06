@@ -1,6 +1,6 @@
 {
   "name": "react-native-styled-toast",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "A theme friendly, easy to use react-native toast component built using styled-components and styled-system.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -63,7 +63,6 @@
   },
   "dependencies": {
     "@types/styled-components": "^5.1.1",
-    "react-native-safe-area-context": "^3.1.8",
     "react-native-status-bar-height": "^2.5.0"
   },
   "release": {

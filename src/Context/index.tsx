@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { LayoutAnimation, UIManager } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Box from '../Box'
 import Toast, { ToastConfig } from '../Toast'
@@ -19,7 +18,7 @@ export const ToastContext = React.createContext<ToastContextType>({
 
 export const useToast = () => React.useContext(ToastContext)
 
-const originalOffset = getStatusBarHeight() + 16
+const originalOffset = getStatusBarHeight()
 
 UIManager && UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true)
 
@@ -42,7 +41,7 @@ const ToastProvider: React.FC<Omit<ToastContextType, 'toast'>> = ({ children, po
     setToasts((prevToasts) => prevToasts.filter((el) => el.id !== id))
   }
 
-  const offset = offsetProp || originalOffset
+  const offset = offsetProp ? offsetProp + originalOffset : originalOffset
 
   return (
     <ToastContext.Provider value={{ toast }}>
@@ -57,11 +56,9 @@ const ToastProvider: React.FC<Omit<ToastContextType, 'toast'>> = ({ children, po
         pb={position === 'BOTTOM' ? offset : 0}
         style={position === 'BOTTOM' ? { bottom: 0 } : { top: 0 }}
       >
-        <SafeAreaView style={{ flex: 1, justifyContent: 'flex-start' }}>
-          {toasts.map((config: ToastConfig & ToastInternalConfig) => {
-            return <Toast position={position} key={config.id} onClose={(id) => hideToast(id)} {...config} />
-          })}
-        </SafeAreaView>
+        {toasts.map((config: ToastConfig & ToastInternalConfig) => {
+          return <Toast position={position} key={config.id} onClose={(id) => hideToast(id)} {...config} />
+        })}
       </Box>
     </ToastContext.Provider>
   )
