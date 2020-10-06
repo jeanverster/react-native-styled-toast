@@ -120,10 +120,10 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 
 ### `ToastProvider`
 
-| Prop           | Type   | Required | Description                                        | Default                        |
-| -------------- | ------ | -------- | -------------------------------------------------- | ------------------------------ |
-| **`position`** | enum   | no       | Sets the position of the toasts                    | TOP                            |
-| **`offset`**   | number | no       | Overrides the default offset from the top / bottom | Constants.statusBarHeight + 16 |
+| Prop           | Type   | Required | Description                                    | Default                   |
+| -------------- | ------ | -------- | ---------------------------------------------- | ------------------------- |
+| **`position`** | enum   | no       | Sets the position of the toasts                | TOP                       |
+| **`offset`**   | number | no       | Increases default offset from the top / bottom | Constants.statusBarHeight |
 
 ### `ToastConfig`
 
