@@ -1,3 +1,10 @@
+## [1.0.23](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.22...v1.0.23) (2020-10-06)
+
+
+### Bug Fixes
+
+* remove Partial type annotation and provide default value for `toast` to avoid null checking ([99f9cb3](https://github.com/jeanverster/react-native-styled-toast/commit/99f9cb33a7c67665ec1da1b1818dc90f01138aeb))
+
 ## [1.0.22](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.21...v1.0.22) (2020-09-14)
 
 
