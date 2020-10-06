@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { Animated, StyleSheet, TouchableOpacity, Vibration } from 'react-native'
+import { Animated, Vibration } from 'react-native'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Box from '../Box'
 import Icon from '../Icon'
 import { Accent, CloseButtonCont, Heading, IconCont, StyledToast, SubText } from './styles'
 
 export type ToastConfig = {
+  accentColor?: string
   bg?: string
   borderColor?: string
   closeButtonBgColor?: string
@@ -35,7 +36,7 @@ export type ToastConfig = {
   iconColor?: string
 }
 
-const statusBarHeight = getStatusBarHeight(true)
+const statusBarHeight = getStatusBarHeight()
 
 export type ToastInternalConfig = {
   id?: string
@@ -58,6 +59,7 @@ const shadow = {
 }
 
 export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
+  accentColor,
   bg,
   borderColor,
   closeButtonBgColor,
@@ -80,9 +82,10 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   iconColor
 }) => {
   const isSuccess = intent === 'SUCCESS'
+  const isInfo = intent === 'INFO'
   const topOffset = offset + 60 * (index || 0)
 
-  const animation = new Animated.Value(0)
+  const animation = React.useRef(new Animated.Value(0)).current
 
   React.useEffect(() => {
     Animated.timing(animation, {
@@ -120,35 +123,35 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
       mb={4}
       py={2}
       bg={bg}
+      onPress={onPress}
+      pr={!!subMessage ? 2 : 0}
       borderColor={borderColor}
       style={{ transform: [{ translateY }, { scale }], ...shadow }}
     >
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={onPress}
-        testID="toast-touchable"
-        style={{ ...StyleSheet.absoluteFillObject, flexDirection: 'row' }}
-      >
-        <Accent testID="toast-accent" bg={isSuccess ? 'success' : 'error'} />
-        {!hideIcon && (
-          <IconCont px={4}>
-            <Icon
-              size={20}
-              family={iconFamily || 'Feather'}
-              color={!!iconColor ? iconColor : isSuccess ? 'success' : 'error'}
-              name={!!iconName ? iconName : isSuccess ? 'check-circle' : 'x-circle'}
-            />
-          </IconCont>
-        )}
-        <Box pl={hideIcon ? 4 : 0} flex={1} alignItems="flex-start">
+      <Accent
+        testID="toast-accent"
+        bg={!!accentColor ? accentColor : isSuccess ? 'success' : isInfo ? 'info' : 'error'}
+      />
+      {!hideIcon && (
+        <IconCont px={4}>
+          <Icon
+            size={20}
+            family={iconFamily || 'Feather'}
+            color={!!iconColor ? iconColor : isSuccess ? 'success' : isInfo ? 'info' : 'error'}
+            name={!!iconName ? iconName : isSuccess ? 'check-circle' : isInfo ? 'alert-circle' : 'x-circle'}
+          />
+        </IconCont>
+      )}
+      <Box py={2} pr={!!subMessage ? 2 : 0} flex={1} pl={hideIcon ? 4 : 0} alignItems="flex-start">
+        <Box flexDirection="row" flexWrap="wrap" flex={1}>
           <Heading color={color}>{message}</Heading>
-          {!!subMessage && (
-            <SubText color={color} mt={2}>
-              {subMessage}
-            </SubText>
-          )}
         </Box>
-      </TouchableOpacity>
+        {!!subMessage && (
+          <SubText color={color} mt={1}>
+            {subMessage}
+          </SubText>
+        )}
+      </Box>
       <CloseButtonCont onPress={() => onClose && id && onClose(id)}>
         <Box p={2} mx={2} alignItems="center" bg={closeButtonBgColor} borderRadius={closeButtonBorderRadius}>
           <Icon size={20} family="Feather" name="x" color={closeIconColor} />
