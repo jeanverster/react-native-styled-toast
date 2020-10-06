@@ -1,3 +1,10 @@
+## [1.0.24](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.23...v1.0.24) (2020-10-06)
+
+
+### Bug Fixes
+
+* remove yarn command and run npm publish directly ([90f32a4](https://github.com/jeanverster/react-native-styled-toast/commit/90f32a44c4a7c5ec6cd25fe5b06003994fcc0242))
+
 ## [1.0.23](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.22...v1.0.23) (2020-10-06)
 
 
