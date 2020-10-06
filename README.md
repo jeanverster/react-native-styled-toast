@@ -89,7 +89,8 @@ export default {
     border: '#E2E8F0',
     muted: '#F0F1F3',
     success: '#7DBE31',
-    error: '#FC0021'
+    error: '#FC0021',
+    info: '#00FFFF'
   }
 }
 ```
@@ -99,6 +100,7 @@ By default, `react-native-styled-toast` references the following theme color key
 `background` (default toast background) \
 `text` (default toast text color) \
 `success` (default success accent color) \
+`info` (default info accent color color) \
 `error` (default error accent color) \
 `muted` (default close button bg color)
 
@@ -127,6 +129,7 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 
 | Prop                        | Type    | Required | Description                                                            | Default        |
 | --------------------------- | ------- | -------- | ---------------------------------------------------------------------- | -------------- |
+| **`accentColor`**           | string  | no       | Sets the background color of the accent on the left                    | undefined      |
 | **`bg`**                    | string  | no       | Sets the background color of the toast                                 | background     |
 | **`borderColor`**           | string  | no       | Sets border color of toast                                             | border         |
 | **`closeButtonBgColor`**    | string  | no       | Sets bg color of the close button                                      | muted          |
