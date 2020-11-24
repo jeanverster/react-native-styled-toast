@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.25...v1.1.0) (2020-11-24)
+
+
+### Features
+
+* add `maxToasts` prop to limit number of toasts on screen - [#39](https://github.com/jeanverster/react-native-styled-toast/issues/39) ([2fc84c0](https://github.com/jeanverster/react-native-styled-toast/commit/2fc84c0b7f372f57c06c3d280485461e397f407b)), closes [#34](https://github.com/jeanverster/react-native-styled-toast/issues/34) [#36](https://github.com/jeanverster/react-native-styled-toast/issues/36) [#40](https://github.com/jeanverster/react-native-styled-toast/issues/40)
+
 ## [1.0.25](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.24...v1.0.25) (2020-10-06)
 
 
