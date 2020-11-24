@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { LayoutAnimation, UIManager } from 'react-native'
+import { LayoutAnimation, LayoutAnimationConfig, UIManager } from 'react-native'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Box from '../Box'
 import Toast, { ToastConfig } from '../Toast'
@@ -10,6 +10,7 @@ type ToastContextType = {
   toast: (options: ToastConfig) => void
   position?: 'TOP' | 'BOTTOM'
   offset?: number
+  maxToasts?: number
 }
 
 export const ToastContext = React.createContext<ToastContextType>({
@@ -24,20 +25,47 @@ UIManager && UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLay
 
 export type FullToastConfig = ToastConfig & ToastInternalConfig
 
-const ToastProvider: React.FC<Omit<ToastContextType, 'toast'>> = ({ children, position, offset: offsetProp }) => {
+const CustomLayoutConfig: LayoutAnimationConfig = {
+  duration: 300,
+  create: {
+    type: LayoutAnimation.Types.easeInEaseOut,
+    property: LayoutAnimation.Properties.opacity
+  },
+  update: {
+    type: LayoutAnimation.Types.easeInEaseOut
+  },
+  delete: {
+    type: LayoutAnimation.Types.easeInEaseOut,
+    property: LayoutAnimation.Properties.opacity
+  }
+}
+
+const ToastProvider: React.FC<Omit<ToastContextType, 'toast'>> = ({
+  children,
+  position,
+  offset: offsetProp,
+  maxToasts
+}) => {
   const [toasts, setToasts] = React.useState<FullToastConfig[]>([])
 
   const toast = (newToast: ToastConfig) => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-    setToasts((prevToasts) =>
-      position === 'BOTTOM'
-        ? [...prevToasts, { index: prevToasts.length, id: uuid(), ...newToast }]
-        : [{ index: prevToasts.length, id: uuid(), ...newToast }, ...prevToasts]
-    )
+    LayoutAnimation.configureNext(CustomLayoutConfig)
+    setToasts((prevToasts) => {
+      const toasts =
+        position === 'BOTTOM'
+          ? [...prevToasts, { index: prevToasts.length, id: uuid(), ...newToast }]
+          : [{ index: prevToasts.length, id: uuid(), ...newToast }, ...prevToasts]
+      if (maxToasts && prevToasts.length === maxToasts) {
+        position === 'BOTTOM' ? toasts.shift() : toasts.pop()
+        return toasts
+      } else {
+        return toasts
+      }
+    })
   }
 
   const hideToast = (id: string) => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    LayoutAnimation.configureNext(CustomLayoutConfig)
     setToasts((prevToasts) => prevToasts.filter((el) => el.id !== id))
   }
 

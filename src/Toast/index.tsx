@@ -1,39 +1,45 @@
 import * as React from 'react'
-import { Animated, Vibration } from 'react-native'
+import { Animated, TouchableOpacity, Vibration } from 'react-native'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Box from '../Box'
+import { BoxProps } from '../Box/index'
 import Icon from '../Icon'
-import { Accent, CloseButtonCont, Heading, IconCont, StyledToast, SubText } from './styles'
+import { Accent, Heading, IconCont, StyledToast, StyledToastProps, SubText } from './styles'
+
+type IconFamilies =
+  | 'Entypo'
+  | 'EvilIcons'
+  | 'Feather'
+  | 'FontAwesome'
+  | 'Foundation'
+  | 'Ionicons'
+  | 'MaterialCommunityIcons'
+  | 'MaterialIcons'
+  | 'Octicons'
+  | 'SimpleLineIcons'
+  | 'Zocial'
 
 export type ToastConfig = {
   accentColor?: string
   bg?: string
-  borderColor?: string
-  closeButtonBgColor?: string
-  closeButtonBorderRadius?: number
+  closeButtonStyles?: BoxProps
   closeIconColor?: string
+  closeIconFamily?: IconFamilies
+  closeIconName?: string
+  closeIconSize?: number
   color?: string
   duration?: number
+  hideAccent?: boolean
   hideIcon?: boolean
+  iconColor?: string
+  iconFamily?: IconFamilies
+  iconName?: string
   intent?: 'SUCCESS' | 'ERROR' | 'INFO'
   message: string
   onPress?: () => void
   shouldVibrate?: boolean
   subMessage?: string
-  iconFamily?:
-    | 'Entypo'
-    | 'EvilIcons'
-    | 'Feather'
-    | 'FontAwesome'
-    | 'Foundation'
-    | 'Ionicons'
-    | 'MaterialCommunityIcons'
-    | 'MaterialIcons'
-    | 'Octicons'
-    | 'SimpleLineIcons'
-    | 'Zocial'
-  iconName?: string
-  iconColor?: string
+  toastStyles?: StyledToastProps
 }
 
 const statusBarHeight = getStatusBarHeight()
@@ -58,16 +64,39 @@ const shadow = {
   elevation: 1
 }
 
+const DEFAULT_PROPS: ToastConfig = {
+  duration: 3000,
+  intent: 'SUCCESS',
+  onPress: () => false,
+  shouldVibrate: false,
+  closeIconColor: 'text',
+  message: 'Toast message!',
+  hideIcon: false,
+  toastStyles: {
+    borderColor: 'border',
+    bg: 'background'
+  },
+  closeButtonStyles: {
+    p: 2,
+    mx: 2,
+    bg: 'muted',
+    borderRadius: 4,
+    alignItems: 'center'
+  }
+}
+
 export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   accentColor,
-  bg,
-  borderColor,
-  closeButtonBgColor,
-  closeButtonBorderRadius,
   closeIconColor,
+  closeIconFamily,
+  closeIconName,
+  closeIconSize,
   color,
   duration,
   hideIcon,
+  iconColor,
+  iconFamily,
+  iconName,
   id,
   index,
   intent,
@@ -77,9 +106,9 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   position,
   shouldVibrate,
   subMessage,
-  iconFamily,
-  iconName,
-  iconColor
+  toastStyles,
+  hideAccent,
+  closeButtonStyles
 }) => {
   const isSuccess = intent === 'SUCCESS'
   const isInfo = intent === 'INFO'
@@ -120,18 +149,21 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
 
   return (
     <StyledToast
-      mb={4}
-      py={2}
-      bg={bg}
-      onPress={onPress}
-      pr={!!subMessage ? 2 : 0}
-      borderColor={borderColor}
+      onPress={() => {
+        onPress && onPress()
+        onClose && id && onClose(id)
+      }}
       style={{ transform: [{ translateY }, { scale }], ...shadow }}
+      {...toastStyles}
+      pr={!!subMessage ? 2 : 0}
     >
-      <Accent
-        testID="toast-accent"
-        bg={!!accentColor ? accentColor : isSuccess ? 'success' : isInfo ? 'info' : 'error'}
-      />
+      {!hideAccent && (
+        <Accent
+          testID="toast-accent"
+          bg={!!accentColor ? accentColor : isSuccess ? 'success' : isInfo ? 'info' : 'error'}
+        />
+      )}
+
       {!hideIcon && (
         <IconCont px={4}>
           <Icon
@@ -142,7 +174,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
           />
         </IconCont>
       )}
-      <Box py={2} pr={!!subMessage ? 2 : 0} flex={1} pl={hideIcon ? 4 : 0} alignItems="flex-start">
+      <Box alignItems="flex-start" flex={1} pl={hideIcon ? 4 : 0} pr={!!subMessage ? 2 : 0} py={2}>
         <Box flexDirection="row" flexWrap="wrap" flex={1}>
           <Heading color={color}>{message}</Heading>
         </Box>
@@ -152,26 +184,22 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
           </SubText>
         )}
       </Box>
-      <CloseButtonCont onPress={() => onClose && id && onClose(id)}>
-        <Box p={2} mx={2} alignItems="center" bg={closeButtonBgColor} borderRadius={closeButtonBorderRadius}>
-          <Icon size={20} family="Feather" name="x" color={closeIconColor} />
-        </Box>
-      </CloseButtonCont>
+      <Box
+        as={TouchableOpacity}
+        onPress={() => onClose && id && onClose(id)}
+        {...Object.assign({}, DEFAULT_PROPS.closeButtonStyles, closeButtonStyles)}
+      >
+        <Icon
+          size={closeIconSize || 20}
+          family={closeIconFamily || 'Feather'}
+          name={closeIconName || 'x'}
+          color={closeIconColor}
+        />
+      </Box>
     </StyledToast>
   )
 }
 
 export default React.memo(Toast)
 
-Toast.defaultProps = {
-  duration: 3000,
-  intent: 'SUCCESS',
-  onPress: () => false,
-  shouldVibrate: false,
-  closeIconColor: 'text',
-  message: 'Toast message!',
-  closeButtonBgColor: 'muted',
-  closeButtonBorderRadius: 4,
-  borderColor: 'border',
-  hideIcon: false
-}
+Toast.defaultProps = DEFAULT_PROPS
