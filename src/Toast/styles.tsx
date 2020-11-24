@@ -1,47 +1,70 @@
 import { Animated, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 import {
-  borderColor,
-  BorderColorProps,
+  background,
+  BackgroundProps,
+  border,
+  BorderProps,
   color,
   ColorProps,
+  compose,
+  flexbox,
+  FlexboxProps,
   fontSize,
   FontSizeProps,
+  layout,
+  LayoutProps,
+  position,
+  PositionProps,
+  shadow,
+  ShadowProps,
   space,
   SpaceProps,
   textAlign,
-  TextAlignProps,
-  top,
-  TopProps
+  TextAlignProps
 } from 'styled-system'
 
-type StyledToastProps = SpaceProps &
+export const systemProps = compose(
+  space,
+  layout,
+  color,
+  flexbox,
+  background,
+  border,
+  position,
+  shadow
+)
+
+export type StyledToastProps = SpaceProps &
   ColorProps &
-  TopProps &
-  BorderColorProps & {
+  LayoutProps &
+  FlexboxProps &
+  BackgroundProps &
+  BorderProps &
+  PositionProps &
+  ShadowProps & {
+    elevation?: number
     accentColor?: string
   }
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity)
 
-export const StyledToast = styled(AnimatedTouchable)<StyledToastProps>`
-  ${top};
-  ${color};
-  ${space};
-  ${borderColor};
-  flex: 1;
-  width: 100%;
-  z-index: 1000;
-  border-width: 1px;
-  border-radius: 4px;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-`
+export const StyledToast = styled(AnimatedTouchable)<StyledToastProps>(systemProps)
 
 StyledToast.defaultProps = {
+  py: 2,
+  mb: 4,
+  flex: 1,
+  zIndex: 1000,
+  width: '100%',
   bg: 'background',
-  accentColor: 'success'
+  borderWidth: '1px',
+  borderRadius: '4px',
+  alignItems: 'center',
+  flexDirection: 'row',
+  accentColor: 'success',
+  justifyContent: 'center',
+  borderColor: 'border'
 }
 
 export const Accent = styled.View<ColorProps>`

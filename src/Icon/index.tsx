@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import * as React from 'react'
 import Entypo from 'react-native-vector-icons/Entypo'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
@@ -23,7 +21,7 @@ export type IconProps = SpaceProps &
     size: number
     testID?: string
   }
-const Icon: React.SFC<IconProps> = (props) => {
+const Icon: React.FC<IconProps> = (props) => {
   let Icon
   switch (props.family) {
     case 'Entypo':
@@ -66,7 +64,7 @@ const Icon: React.SFC<IconProps> = (props) => {
     ${color};
     ${space};
   `
-  return <StyledIcon name={props.name} {...props} />
+  return <StyledIcon {...props} />
 }
 
 export default Icon
