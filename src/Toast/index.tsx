@@ -184,18 +184,16 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
           </SubText>
         )}
       </Box>
-      <Box
-        as={TouchableOpacity}
-        onPress={() => onClose && id && onClose(id)}
-        {...Object.assign({}, DEFAULT_PROPS.closeButtonStyles, closeButtonStyles)}
-      >
-        <Icon
-          size={closeIconSize || 20}
-          family={closeIconFamily || 'Feather'}
-          name={closeIconName || 'x'}
-          color={closeIconColor}
-        />
-      </Box>
+      <TouchableOpacity onPress={() => onClose && id && onClose(id)}>
+        <Box {...Object.assign({}, DEFAULT_PROPS.closeButtonStyles, closeButtonStyles)}>
+          <Icon
+            size={closeIconSize || 20}
+            family={closeIconFamily || 'Feather'}
+            name={closeIconName || 'x'}
+            color={closeIconColor}
+          />
+        </Box>
+      </TouchableOpacity>
     </StyledToast>
   )
 }
