@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/jeanverster/react-native-styled-toast/compare/v1.1.0...v1.1.1) (2020-11-24)
+
+
+### Bug Fixes
+
+* revert close button change to avoid TS errors ([06982b9](https://github.com/jeanverster/react-native-styled-toast/commit/06982b9df08621a387de5910a5d847d62375f475))
+
 # [1.1.0](https://github.com/jeanverster/react-native-styled-toast/compare/v1.0.25...v1.1.0) (2020-11-24)
 
 
