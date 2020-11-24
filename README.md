@@ -118,25 +118,25 @@ You are now able to fully customize both the style of the Toast component itself
 
 <br />
 
-```
+```jsx
 toast({
-  message: "My First Toast!",
+  message: 'My First Toast!',
   toastStyles: {
-    bg: "lightblue",
-    borderRadius: 16,
+    bg: 'lightblue',
+    borderRadius: 16
   },
-  color: "white",
-  iconColor: "white",
-  iconFamily: "Entypo",
-  iconName: "info",
+  color: 'white',
+  iconColor: 'white',
+  iconFamily: 'Entypo',
+  iconName: 'info',
   closeButtonStyles: {
     px: 4,
-    bg: "darkgrey",
-    borderRadius: 16,
+    bg: 'darkgrey',
+    borderRadius: 16
   },
-  closeIconColor: "white",
-  hideAccent: true,
-});
+  closeIconColor: 'white',
+  hideAccent: true
+})
 ```
 
 Above is an example of a fully customized toast which renders the following:
@@ -150,7 +150,7 @@ Above is an example of a fully customized toast which renders the following:
 
 Along with the new styling updates, you are now also able to limit the number of toasts which a user can see. To do so, simply pass the `maxToasts` prop to the `ToastProvider` component:
 
-```
+```jsx
 <ToastProvider maxToasts={2} offset={16} position="BOTTOM">
   <Container />
 </ToastProvider>
