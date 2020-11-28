@@ -21,7 +21,9 @@ import {
   space,
   SpaceProps,
   textAlign,
-  TextAlignProps
+  TextAlignProps,
+  opacity,
+  OpacityProps
 } from 'styled-system'
 
 export const systemProps = compose(
@@ -32,7 +34,8 @@ export const systemProps = compose(
   background,
   border,
   position,
-  shadow
+  shadow,
+  opacity
 )
 
 export type StyledToastProps = SpaceProps &
@@ -45,7 +48,7 @@ export type StyledToastProps = SpaceProps &
   ShadowProps & {
     elevation?: number
     accentColor?: string
-  }
+  } & OpacityProps
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity)
 
@@ -64,7 +67,8 @@ StyledToast.defaultProps = {
   flexDirection: 'row',
   accentColor: 'success',
   justifyContent: 'center',
-  borderColor: 'border'
+  borderColor: 'border',
+  opacity: 1
 }
 
 export const Accent = styled.View<ColorProps>`

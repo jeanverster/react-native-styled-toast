@@ -40,6 +40,7 @@ export type ToastConfig = {
   shouldVibrate?: boolean
   subMessage?: string
   toastStyles?: StyledToastProps
+  opacity?: number
 }
 
 const statusBarHeight = getStatusBarHeight()
@@ -82,7 +83,8 @@ const DEFAULT_PROPS: ToastConfig = {
     bg: 'muted',
     borderRadius: 4,
     alignItems: 'center'
-  }
+  },
+  opacity: 1
 }
 
 export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
@@ -108,7 +110,8 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   subMessage,
   toastStyles,
   hideAccent,
-  closeButtonStyles
+  closeButtonStyles,
+  opacity
 }) => {
   const isSuccess = intent === 'SUCCESS'
   const isInfo = intent === 'INFO'
@@ -153,7 +156,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
         onPress && onPress()
         onClose && id && onClose(id)
       }}
-      style={{ transform: [{ translateY }, { scale }], ...shadow }}
+      style={{ transform: [{ translateY }, { scale }], opacity, ...shadow }}
       {...toastStyles}
       pr={!!subMessage ? 2 : 0}
     >
