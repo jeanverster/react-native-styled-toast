@@ -188,7 +188,7 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`closeIconFamily`**   | string  | no       | Sets the family of the close icon                                      | Feather        |
 | **`closeIconName`**     | string  | no       | Sets the name of the close icon                                        | 'x'            |
 | **`closeIconSize`**     | string  | no       | Sets the size of the close icon                                        | 20             |
-| **`hideCloseIcon`**     | boolean | no       | Shows / hides of the close icon                                        | false             |
+| **`hideCloseIcon`**     | boolean | no       | Shows / hides of the close icon                                        | false          |
 | **`color`**             | string  | no       | Sets the text color of the toast                                       | text           |
 | **`duration`**          | number  | no       | ms duration of toast before auto closing. 0 = infinite.                | 3000           |
 | **`hideAccent`**        | boolean | no       | Shows / hides accent                                                   | undefined      |
@@ -196,6 +196,7 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`iconColor`**         | string  | no       | Customize icon color using key from theme                              | undefined      |
 | **`iconFamily`**        | string  | no       | Allow referencing of custom icon family from react-native-vector-icons | Feather        |
 | **`iconName`**          | string  | no       | Allow referencing of custom icon name from specified icon family       | undefined      |
+| **`iconSize`**          | string  | no       | Sets the size of the icon                                              | 20             |
 | **`intent`**            | enum    | no       | Updates icon and accent color based on intent.                         | SUCCESS        |
 | **`message`**           | string  | yes      | Text message that gets rendered                                        | Toast Message! |
 | **`onPress`**           | func    | no       | Function that gets exectuted onPress of toast                          | () => false    |

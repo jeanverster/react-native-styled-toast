@@ -40,6 +40,7 @@ export type ToastConfig = {
   subMessage?: string
   toastStyles?: StyledToastProps
   hideCloseIcon?: boolean
+  iconSize?: number
 }
 
 const statusBarHeight = getStatusBarHeight()
@@ -110,7 +111,8 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   toastStyles,
   hideAccent,
   closeButtonStyles,
-  hideCloseIcon
+  hideCloseIcon,
+  iconSize
 }) => {
   const isSuccess = intent === 'SUCCESS'
   const isInfo = intent === 'INFO'
@@ -169,7 +171,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
       {!hideIcon && (
         <IconCont px={4}>
           <Icon
-            size={20}
+            size={iconSize || 20}
             family={iconFamily || 'Feather'}
             color={!!iconColor ? iconColor : isSuccess ? 'success' : isInfo ? 'info' : 'error'}
             name={!!iconName ? iconName : isSuccess ? 'check-circle' : isInfo ? 'alert-circle' : 'x-circle'}
