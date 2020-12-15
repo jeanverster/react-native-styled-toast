@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { Animated, TouchableOpacity, Vibration } from 'react-native'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
-import Box from '../Box'
-import { BoxProps } from '../Box/index'
+import Box, { BoxProps } from '../Box'
 import Icon from '../Icon'
 import { Accent, Heading, IconCont, StyledToast, StyledToastProps, SubText } from './styles'
 
@@ -40,6 +39,7 @@ export type ToastConfig = {
   shouldVibrate?: boolean
   subMessage?: string
   toastStyles?: StyledToastProps
+  hideCloseIcon?: boolean
 }
 
 const statusBarHeight = getStatusBarHeight()
@@ -82,7 +82,8 @@ const DEFAULT_PROPS: ToastConfig = {
     bg: 'muted',
     borderRadius: 4,
     alignItems: 'center'
-  }
+  },
+  hideCloseIcon: false
 }
 
 export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
@@ -108,7 +109,8 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   subMessage,
   toastStyles,
   hideAccent,
-  closeButtonStyles
+  closeButtonStyles,
+  hideCloseIcon
 }) => {
   const isSuccess = intent === 'SUCCESS'
   const isInfo = intent === 'INFO'
@@ -184,16 +186,18 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
           </SubText>
         )}
       </Box>
-      <TouchableOpacity onPress={() => onClose && id && onClose(id)}>
-        <Box {...Object.assign({}, DEFAULT_PROPS.closeButtonStyles, closeButtonStyles)}>
-          <Icon
-            size={closeIconSize || 20}
-            family={closeIconFamily || 'Feather'}
-            name={closeIconName || 'x'}
-            color={closeIconColor}
-          />
-        </Box>
-      </TouchableOpacity>
+      {!hideCloseIcon && (
+        <TouchableOpacity onPress={() => onClose && id && onClose(id)}>
+          <Box {...Object.assign({}, DEFAULT_PROPS.closeButtonStyles, closeButtonStyles)}>
+            <Icon
+              size={closeIconSize || 20}
+              family={closeIconFamily || 'Feather'}
+              name={closeIconName || 'x'}
+              color={closeIconColor}
+            />
+          </Box>
+        </TouchableOpacity>
+      )}
     </StyledToast>
   )
 }

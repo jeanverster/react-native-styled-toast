@@ -188,6 +188,7 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`closeIconFamily`**   | string  | no       | Sets the family of the close icon                                      | Feather        |
 | **`closeIconName`**     | string  | no       | Sets the name of the close icon                                        | 'x'            |
 | **`closeIconSize`**     | string  | no       | Sets the size of the close icon                                        | 20             |
+| **`hideCloseIcon`**     | boolean | no       | Shows / hides of the close icon                                        | false             |
 | **`color`**             | string  | no       | Sets the text color of the toast                                       | text           |
 | **`duration`**          | number  | no       | ms duration of toast before auto closing. 0 = infinite.                | 3000           |
 | **`hideAccent`**        | boolean | no       | Shows / hides accent                                                   | undefined      |
