@@ -3,7 +3,7 @@ import { Animated, TouchableOpacity, Vibration } from 'react-native'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
 import Box, { BoxProps } from '../Box'
 import Icon from '../Icon'
-import { Accent, Heading, IconCont, StyledToast, StyledToastProps, SubText } from './styles'
+import { Accent, Heading, IconCont, StyledToast, StyledToastProps, SubText, TextProps } from './styles'
 
 type IconFamilies =
   | 'Entypo'
@@ -36,6 +36,8 @@ export type ToastConfig = {
   intent?: 'SUCCESS' | 'ERROR' | 'INFO'
   message: string
   onPress?: () => void
+  messageProps: TextProps
+  subMessageProps: TextProps
   shouldVibrate?: boolean
   subMessage?: string
   toastStyles?: StyledToastProps
@@ -72,6 +74,8 @@ const DEFAULT_PROPS: ToastConfig = {
   shouldVibrate: false,
   closeIconColor: 'text',
   message: 'Toast message!',
+  messageProps: {},
+  subMessageProps: {},
   hideIcon: false,
   toastStyles: {
     borderColor: 'border',
@@ -103,11 +107,13 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   index,
   intent,
   message,
+  messageProps,
   onClose,
   onPress,
   position,
   shouldVibrate,
   subMessage,
+  subMessageProps,
   toastStyles,
   hideAccent,
   closeButtonStyles,
@@ -180,10 +186,12 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
       )}
       <Box alignItems="flex-start" flex={1} pl={hideIcon ? 4 : 0} pr={!!subMessage ? 2 : 0} py={2}>
         <Box flexDirection="row" flexWrap="wrap" flex={1}>
-          <Heading color={color}>{message}</Heading>
+          <Heading color={color} {...messageProps}>
+            {message}
+          </Heading>
         </Box>
         {!!subMessage && (
-          <SubText color={color} mt={1}>
+          <SubText color={color} mt={1} {...subMessageProps}>
             {subMessage}
           </SubText>
         )}

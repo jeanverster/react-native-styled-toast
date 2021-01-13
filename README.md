@@ -203,6 +203,8 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`shouldVibrate`**     | boolean | no       | Toggles whether phone vibrates on notification                         | false          |
 | **`subMessage`**        | string  | no       | Sub message that gets rendered below message                           | undefined      |
 | **`toastStyles`**       | object  | no       | Allows custom styling of the Toast component. Values pull from theme   | undefined      |
+| **`messageProps`**      | TextProps  | no    | Allows custom styling message                                          | {}      |
+| **`subMessageProps`**   | TextProps  | no    | Allows custom styling subMessage                                       | {}      |
 
 <br />
 <div>Toast icon by <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
