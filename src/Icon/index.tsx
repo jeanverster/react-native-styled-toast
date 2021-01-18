@@ -3,6 +3,7 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Feather from 'react-native-vector-icons/Feather'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Foundation from 'react-native-vector-icons/Foundation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -34,6 +35,9 @@ const Icon: React.FC<IconProps> = (props) => {
       Icon = Feather
       break
     case 'FontAwesome':
+      Icon = FontAwesome
+      break
+    case 'FontAwesome5':
       Icon = FontAwesome
       break
     case 'Foundation':
