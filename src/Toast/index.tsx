@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { Animated, TouchableOpacity, Vibration } from 'react-native'
 import { getStatusBarHeight } from 'react-native-status-bar-height'
-import Box from '../Box'
-import { BoxProps } from '../Box/index'
+import Box, { BoxProps } from '../Box'
 import Icon from '../Icon'
-import { Accent, Heading, IconCont, StyledToast, StyledToastProps, SubText } from './styles'
+import { Accent, Heading, IconCont, StyledToast, StyledToastProps, SubText, TextProps } from './styles'
 
 type IconFamilies =
   | 'Entypo'
@@ -38,9 +37,13 @@ export type ToastConfig = {
   intent?: 'SUCCESS' | 'ERROR' | 'INFO'
   message: string
   onPress?: () => void
+  messageProps: TextProps
+  subMessageProps: TextProps
   shouldVibrate?: boolean
   subMessage?: string
   toastStyles?: StyledToastProps
+  hideCloseIcon?: boolean
+  iconSize?: number
 }
 
 const statusBarHeight = getStatusBarHeight()
@@ -72,6 +75,8 @@ const DEFAULT_PROPS: ToastConfig = {
   shouldVibrate: false,
   closeIconColor: 'text',
   message: 'Toast message!',
+  messageProps: {},
+  subMessageProps: {},
   hideIcon: false,
   toastStyles: {
     borderColor: 'border',
@@ -83,7 +88,8 @@ const DEFAULT_PROPS: ToastConfig = {
     bg: 'muted',
     borderRadius: 4,
     alignItems: 'center'
-  }
+  },
+  hideCloseIcon: false
 }
 
 export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
@@ -102,14 +108,18 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   index,
   intent,
   message,
+  messageProps,
   onClose,
   onPress,
   position,
   shouldVibrate,
   subMessage,
+  subMessageProps,
   toastStyles,
   hideAccent,
-  closeButtonStyles
+  closeButtonStyles,
+  hideCloseIcon,
+  iconSize
 }) => {
   const isSuccess = intent === 'SUCCESS'
   const isInfo = intent === 'INFO'
@@ -168,7 +178,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
       {!hideIcon && (
         <IconCont px={4}>
           <Icon
-            size={20}
+            size={iconSize || 20}
             family={iconFamily || 'Feather'}
             color={!!iconColor ? iconColor : isSuccess ? 'success' : isInfo ? 'info' : 'error'}
             name={!!iconName ? iconName : isSuccess ? 'check-circle' : isInfo ? 'alert-circle' : 'x-circle'}
@@ -177,24 +187,28 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
       )}
       <Box alignItems="flex-start" flex={1} pl={hideIcon ? 4 : 0} pr={!!subMessage ? 2 : 0} py={2}>
         <Box flexDirection="row" flexWrap="wrap" flex={1}>
-          <Heading color={color}>{message}</Heading>
+          <Heading color={color} {...messageProps}>
+            {message}
+          </Heading>
         </Box>
         {!!subMessage && (
-          <SubText color={color} mt={1}>
+          <SubText color={color} mt={1} {...subMessageProps}>
             {subMessage}
           </SubText>
         )}
       </Box>
-      <TouchableOpacity onPress={() => onClose && id && onClose(id)}>
-        <Box {...Object.assign({}, DEFAULT_PROPS.closeButtonStyles, closeButtonStyles)}>
-          <Icon
-            size={closeIconSize || 20}
-            family={closeIconFamily || 'Feather'}
-            name={closeIconName || 'x'}
-            color={closeIconColor}
-          />
-        </Box>
-      </TouchableOpacity>
+      {!hideCloseIcon && (
+        <TouchableOpacity onPress={() => onClose && id && onClose(id)}>
+          <Box {...Object.assign({}, DEFAULT_PROPS.closeButtonStyles, closeButtonStyles)}>
+            <Icon
+              size={closeIconSize || 20}
+              family={closeIconFamily || 'Feather'}
+              name={closeIconName || 'x'}
+              color={closeIconColor}
+            />
+          </Box>
+        </TouchableOpacity>
+      )}
     </StyledToast>
   )
 }

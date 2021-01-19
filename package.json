@@ -7,7 +7,7 @@
   "scripts": {
     "build": "yarn format && rm -rf dist && tsc",
     "format": "yarn prettier -- --write",
-    "prepublishOnly": "yarn build",
+    "prepare": "yarn build",
     "prettier": "prettier \"**/*.+(js|jsx|json|css|scss|ts|tsx)\"",
     "release": "npm publish",
     "test": "jest"
