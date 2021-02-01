@@ -186,7 +186,7 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
         </IconCont>
       )}
       <Box alignItems="flex-start" flex={1} pl={hideIcon ? 4 : 0} pr={!!subMessage ? 2 : 0} py={2}>
-        <Box flexDirection="row" flexWrap="wrap" flex={1}>
+        <Box flexDirection="row" flexWrap="wrap" flex={1} minHeight="auto">
           <Heading color={color} {...messageProps}>
             {message}
           </Heading>
