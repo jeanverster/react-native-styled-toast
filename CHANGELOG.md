@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/jeanverster/react-native-styled-toast/compare/v1.1.2...v1.2.0) (2021-03-13)
+
+
+### Features
+
+* add animation type options ([804add2](https://github.com/jeanverster/react-native-styled-toast/commit/804add2516c97cac43ec9b62bca4bf0e15b29069))
+
 ## [1.1.2](https://github.com/jeanverster/react-native-styled-toast/compare/v1.1.1...v1.1.2) (2021-03-13)
 
 
