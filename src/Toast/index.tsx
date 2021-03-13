@@ -21,6 +21,7 @@ type IconFamilies =
 
 export type ToastConfig = {
   accentColor?: string
+  animationType?: 'slide' | 'scale' | 'fade'
   bg?: string
   closeButtonStyles?: BoxProps
   closeIconColor?: string
@@ -78,6 +79,7 @@ const DEFAULT_PROPS: ToastConfig = {
   messageProps: {},
   subMessageProps: {},
   hideIcon: false,
+  animationType: 'slide',
   toastStyles: {
     borderColor: 'border',
     bg: 'background'
@@ -94,6 +96,7 @@ const DEFAULT_PROPS: ToastConfig = {
 
 export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   accentColor,
+  animationType,
   closeIconColor,
   closeIconFamily,
   closeIconName,
@@ -158,13 +161,30 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
     extrapolate: 'clamp'
   })
 
+  const opacity = animation.interpolate({
+    inputRange: [0, 0.5],
+    outputRange: [0, 1],
+    extrapolate: 'clamp'
+  })
+
+  const getStyles = () => {
+    switch (animationType) {
+      case 'fade':
+        return { opacity, ...shadow }
+      case 'scale':
+        return { transform: [{ scale }], opacity, ...shadow }
+      default:
+        return { transform: [{ translateY }, { scale }], ...shadow }
+    }
+  }
+
   return (
     <StyledToast
       onPress={() => {
         onPress && onPress()
         onClose && id && onClose(id)
       }}
-      style={{ transform: [{ translateY }, { scale }], ...shadow }}
+      style={getStyles()}
       {...toastStyles}
       pr={!!subMessage ? 2 : 0}
     >
