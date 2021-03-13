@@ -37,8 +37,8 @@ export type ToastConfig = {
   intent?: 'SUCCESS' | 'ERROR' | 'INFO'
   message: string
   onPress?: () => void
-  messageProps: TextProps
-  subMessageProps: TextProps
+  messageProps?: TextProps
+  subMessageProps?: TextProps
   shouldVibrate?: boolean
   subMessage?: string
   toastStyles?: StyledToastProps
