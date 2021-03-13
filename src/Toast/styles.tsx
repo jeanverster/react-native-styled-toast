@@ -14,6 +14,8 @@ import {
   FontSizeProps,
   layout,
   LayoutProps,
+  opacity,
+  OpacityProps,
   position,
   PositionProps,
   shadow,
@@ -32,7 +34,8 @@ export const systemProps = compose(
   background,
   border,
   position,
-  shadow
+  shadow,
+  opacity
 )
 
 export type StyledToastProps = SpaceProps &
@@ -42,7 +45,8 @@ export type StyledToastProps = SpaceProps &
   BackgroundProps &
   BorderProps &
   PositionProps &
-  ShadowProps & {
+  ShadowProps &
+  OpacityProps & {
     elevation?: number
     accentColor?: string
   }
