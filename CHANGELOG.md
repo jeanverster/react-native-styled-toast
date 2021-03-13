@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/jeanverster/react-native-styled-toast/compare/v1.1.1...v1.1.2) (2021-03-13)
+
+
+### Bug Fixes
+
+* remove required on relevant props ([9dcb03e](https://github.com/jeanverster/react-native-styled-toast/commit/9dcb03ea5487e76ed143bd820197d53c76e5526d))
+
 ## [1.1.1](https://github.com/jeanverster/react-native-styled-toast/compare/v1.1.0...v1.1.1) (2020-11-24)
 
 
