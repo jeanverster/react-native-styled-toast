@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/jeanverster/react-native-styled-toast/compare/v1.2.0...v1.3.0) (2021-03-13)
+
+
+### Features
+
+* add opacity fn to toastStyles ([8927044](https://github.com/jeanverster/react-native-styled-toast/commit/89270441cd9037ebd4f6f6975cb975ec5547271b))
+
 # [1.2.0](https://github.com/jeanverster/react-native-styled-toast/compare/v1.1.2...v1.2.0) (2021-03-13)
 
 
