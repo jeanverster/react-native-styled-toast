@@ -45,6 +45,7 @@ export type ToastConfig = {
   toastStyles?: StyledToastProps
   hideCloseIcon?: boolean
   iconSize?: number
+  allowFontScaling?: boolean
 }
 
 const statusBarHeight = getStatusBarHeight()
@@ -91,7 +92,8 @@ const DEFAULT_PROPS: ToastConfig = {
     borderRadius: 4,
     alignItems: 'center'
   },
-  hideCloseIcon: false
+  hideCloseIcon: false,
+  allowFontScaling: true
 }
 
 export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
@@ -122,7 +124,8 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   hideAccent,
   closeButtonStyles,
   hideCloseIcon,
-  iconSize
+  iconSize,
+  allowFontScaling
 }) => {
   const isSuccess = intent === 'SUCCESS'
   const isInfo = intent === 'INFO'
@@ -207,12 +210,12 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
       )}
       <Box alignItems="flex-start" flex={1} pl={hideIcon ? 4 : 0} pr={!!subMessage ? 2 : 0} py={2}>
         <Box flexDirection="row" flexWrap="wrap" flex={1}>
-          <Heading color={color} {...messageProps}>
+          <Heading color={color} {...messageProps} allowFontScaling={allowFontScaling}>
             {message}
           </Heading>
         </Box>
         {!!subMessage && (
-          <SubText color={color} mt={1} {...subMessageProps}>
+          <SubText color={color} mt={1} {...subMessageProps} allowFontScaling={allowFontScaling}>
             {subMessage}
           </SubText>
         )}
