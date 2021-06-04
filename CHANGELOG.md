@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/jeanverster/react-native-styled-toast/compare/v1.3.0...v1.3.1) (2021-06-04)
+
+
+### Bug Fixes
+
+* add useCallback hook to toast method ([ff0c604](https://github.com/jeanverster/react-native-styled-toast/commit/ff0c60488d20c24507a01b947e689be70ac99eca))
+
 # [1.3.0](https://github.com/jeanverster/react-native-styled-toast/compare/v1.2.0...v1.3.0) (2021-03-13)
 
 
