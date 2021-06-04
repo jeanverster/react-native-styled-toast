@@ -48,21 +48,24 @@ const ToastProvider: React.FC<Omit<ToastContextType, 'toast'>> = ({
 }) => {
   const [toasts, setToasts] = React.useState<FullToastConfig[]>([])
 
-  const toast = (newToast: ToastConfig) => {
-    LayoutAnimation.configureNext(CustomLayoutConfig)
-    setToasts((prevToasts) => {
-      const toasts =
-        position === 'BOTTOM'
-          ? [...prevToasts, { index: prevToasts.length, id: uuid(), ...newToast }]
-          : [{ index: prevToasts.length, id: uuid(), ...newToast }, ...prevToasts]
-      if (maxToasts && prevToasts.length === maxToasts) {
-        position === 'BOTTOM' ? toasts.shift() : toasts.pop()
-        return toasts
-      } else {
-        return toasts
-      }
-    })
-  }
+  const toast = React.useCallback(
+    (newToast: ToastConfig) => {
+      LayoutAnimation.configureNext(CustomLayoutConfig)
+      setToasts((prevToasts) => {
+        const toasts =
+          position === 'BOTTOM'
+            ? [...prevToasts, { index: prevToasts.length, id: uuid(), ...newToast }]
+            : [{ index: prevToasts.length, id: uuid(), ...newToast }, ...prevToasts]
+        if (maxToasts && prevToasts.length === maxToasts) {
+          position === 'BOTTOM' ? toasts.shift() : toasts.pop()
+          return toasts
+        } else {
+          return toasts
+        }
+      })
+    },
+    [maxToasts]
+  )
 
   const hideToast = (id: string) => {
     LayoutAnimation.configureNext(CustomLayoutConfig)
