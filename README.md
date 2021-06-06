@@ -26,6 +26,16 @@
 
 `$ yarn add react-native-styled-toast`
 
+## Android Vibrate Permissions
+
+If you want to use the `shouldVibrate` feature on **Android** you need to add the `android.permission.VIBRATE` permission to your projects `android/app/src/main/AndroidManifest.xml` like this:
+
+```xml
+<uses-permission android:name="android.permission.VIBRATE" />
+```
+
+See also [Vibration](https://reactnative.dev/docs/vibration) in the official React-Native docs.
+
 ## Usage
 
 `react-native-styled-toast` is built to work with both vanilla react-native apps as well as react-native apps bootstrapped with Expo. It utilizes `styled-components` and `styled-system` under the hood to facilitate theming.
