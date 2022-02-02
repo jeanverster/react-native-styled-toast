@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/jeanverster/react-native-styled-toast/compare/v1.3.1...v1.4.0) (2022-02-02)
+
+
+### Features
+
+* custom shadow in ToastConfig ([#85](https://github.com/jeanverster/react-native-styled-toast/issues/85)) ([031a6eb](https://github.com/jeanverster/react-native-styled-toast/commit/031a6eb940919795bbfa4862319d8a18dd279dcb))
+
 ## [1.3.1](https://github.com/jeanverster/react-native-styled-toast/compare/v1.3.0...v1.3.1) (2021-06-04)
 
 
