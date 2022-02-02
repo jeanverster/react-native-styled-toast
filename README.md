@@ -207,5 +207,6 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`messageProps`**      | TextProps | no       | Allows custom styling message                                                                  | {}             |
 | **`subMessageProps`**   | TextProps | no       | Allows custom styling subMessage                                                               | {}             |
 | **`allowFontScaling`**  | boolean   | no       | Allows font scaling                                                                            | true          |
+| **`shadow`**  | ShadowProps   | no       | Allows custom shadow                                           | {}       |
 <br />
 <div>Toast icon by <a href="https://www.flaticon.com/authors/ultimatearm" title="ultimatearm">ultimatearm</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>

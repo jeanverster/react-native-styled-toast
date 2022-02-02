@@ -46,6 +46,16 @@ export type ToastConfig = {
   hideCloseIcon?: boolean
   iconSize?: number
   allowFontScaling?: boolean
+  shadow?: {
+    shadowColor?: string
+    shadowOffset?: {
+      width: number
+      height: number
+    }
+    shadowOpacity?: number
+    shadowRadius?: number
+    elevation?: number
+  }
 }
 
 const statusBarHeight = getStatusBarHeight()
@@ -59,7 +69,7 @@ export type ToastInternalConfig = {
 
 const offset = statusBarHeight + 16
 
-const shadow = {
+const shadowDefault = {
   shadowColor: '#000',
   shadowOffset: {
     width: 0,
@@ -125,7 +135,8 @@ export const Toast: React.FC<ToastConfig & ToastInternalConfig> = ({
   closeButtonStyles,
   hideCloseIcon,
   iconSize,
-  allowFontScaling
+  allowFontScaling,
+  shadow = shadowDefault
 }) => {
   const isSuccess = intent === 'SUCCESS'
   const isInfo = intent === 'INFO'
