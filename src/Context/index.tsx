@@ -11,6 +11,7 @@ type ToastContextType = {
   position?: 'TOP' | 'BOTTOM'
   offset?: number
   maxToasts?: number
+  zIndex?: number
 }
 
 export const ToastContext = React.createContext<ToastContextType>({
@@ -44,7 +45,8 @@ const ToastProvider: React.FC<Omit<ToastContextType, 'toast'>> = ({
   children,
   position,
   offset: offsetProp,
-  maxToasts
+  maxToasts,
+  zIndex = 1
 }) => {
   const [toasts, setToasts] = React.useState<FullToastConfig[]>([])
 
@@ -78,6 +80,7 @@ const ToastProvider: React.FC<Omit<ToastContextType, 'toast'>> = ({
     <ToastContext.Provider value={{ toast }}>
       {children}
       <Box
+        zIndex={zIndex}
         px={4}
         left={0}
         right={0}

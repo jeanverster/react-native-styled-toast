@@ -177,6 +177,7 @@ Because of the theming capability of `react-native-styled-toast`, it has out of 
 | **`maxToasts`** | number | no       | Sets max number of toasts to show              | Constants.statusBarHeight |
 | **`offset`**    | number | no       | Increases default offset from the top / bottom | Constants.statusBarHeight |
 | **`position`**  | enum   | no       | Sets the position of the toasts                | TOP                       |
+| **`zIndex`**    | number | no       | Sets the zIndex of the toasts                  | 1                         |
 
 ### `ToastConfig`
 
