@@ -63,7 +63,7 @@
     "prettier": "^1.18.2",
     "react-native-vector-icons": "^7.0.0",
     "react-test-renderer": "16.8.3",
-    "semantic-release": "^17.1.1",
+    "semantic-release": "^19.0.3",
     "tsc-watch": "^4.2.9",
     "typescript": "^3.6.4"
   },
